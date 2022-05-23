@@ -32,7 +32,7 @@ int main()
     Root_node->r_side->l_side = New(52);  
     Root_node->r_side->r_side = New(60);  
      
-    cout<<"\n The Inorder traversal of given binary tree is -\n";  
+    cout<<"\n Inorder_Tree_Traversal \n";  
     IN_traversal(Root_node);  
     return 0;  
 }  
