@@ -1,0 +1,81 @@
+<script>
+class TreeTraversal
+{
+    constructor(x)
+	{
+		this.n = x;
+		this.l_side = null;
+		this.r_side= null;
+	}
+}
+let Root_node;
+function POST_Traversal(Root_node)
+{
+	if (Root_node == null)
+		return;
+
+	let i = new TreeTraversal(-1), j = null;
+	let k = null,
+			p = null,
+			q = null;
+			
+	i.l_side = Root_node;
+
+	while (i != null)
+	{
+		if (i.l_side == null)
+		{
+			i = i.r_side;
+		}
+
+		else
+		{
+			j = i.l_side;
+			while (j.r_side != null && j.r_side != i)
+				j = j.r_side;
+
+			if (j.r_side == null)
+			{
+				j.r_side = i;
+				i = i.l_side;
+			}
+			else
+			{
+				j.r_side = null;
+				p = i;
+				i = i.l_side;
+				k = null;
+
+				while (i != null)
+				{
+					q = i.r_side;
+					i.r_side = k;
+					k = i;
+					i = q;
+				}
+				while (k != null)
+				{
+				document.write(k.n + " ");
+					q = k.r_side;
+					k.r_side = i;
+					i = k;
+					k = q;
+				}
+				i = p;
+				i = i.r_side;
+			}
+		}
+	}
+}
+Root_node = new TreeTraversal(32);
+Root_node.l_side = new TreeTraversal(20);
+Root_node.r_side = new TreeTraversal(48);
+Root_node.l_side.l_side = new TreeTraversal(13);
+Root_node.l_side.r_side = new TreeTraversal(21);
+Root_node.r_side.l_side = new TreeTraversal(28);
+Root_node.r_side.r_side = new TreeTraversal(55);
+
+document.write("PostOrder-Tree-Traversal:<br>");
+POST_Traversal(Root_node);
+
+</script>
