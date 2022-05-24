@@ -1,0 +1,51 @@
+<script>
+class TreeTraversal
+{
+	constructor(x)
+	{
+		this.n = x;
+		this.l_side = null;
+		this.r_side = null;
+	}
+}
+
+var Root_node = null;
+function PRE_traversal(z)
+{
+	if (z == null)
+	{
+		return;
+	}
+	
+	var s = [];
+	s.push(Root_node);
+	
+	while (s.length > 0)
+	{
+		
+		var m = s[s.length - 1];
+		document.write(m.n + " ");
+		s.pop();
+		
+		if (m.r_side != null)
+		{
+			s.push(m.r_side);
+		}
+		if (m.l_side != null)
+		{
+			s.push(m.l_side);
+		}
+	}
+}
+
+Root_node = new TreeTraversal(30);
+Root_node.l_side = new TreeTraversal(20);
+Root_node.r_side = new TreeTraversal(40);
+Root_node.l_side.l_side = new TreeTraversal(11);
+Root_node.l_side.r_side = new TreeTraversal(23);
+Root_node.r_side.l_side = new TreeTraversal(35);
+Root_node.r_side.r_side = new TreeTraversal(50);
+
+PRE_traversal(Root_node);
+
+</script>
